@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 
 @Entity(name = "clients")
 @AllArgsConstructor
@@ -51,6 +53,11 @@ public class Client {
                 .clientAuthenticationMethod(new ClientAuthenticationMethod(client.getAuthenticationMethod()))
                 .redirectUri(client.getRedirectUri())
                 .scope(client.getScope())
+                //ovo bi bilo u bazi ali zbog lakseg rada mi cemo vode direktno
+                .tokenSettings(TokenSettings.builder()
+                        .accessTokenFormat(OAuth2TokenFormat.REFERENCE) //opaque
+                        .build())
+
                 .build();
     }
 

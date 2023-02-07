@@ -8,10 +8,13 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.token.JwtEncodingContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
+
+import java.util.Collection;
 
 @Configuration
 public class TokenConfiguration {
@@ -36,6 +39,8 @@ public class TokenConfiguration {
         return context -> {
 
             context.getClaims().claim("test", "test");
+            Collection<? extends GrantedAuthority> authorities = context.getPrincipal().getAuthorities();//list of GranterAuthority
+            context.getClaims().claim("authorities",authorities.stream().map(a->a.getAuthority()).toList());
         };
 
     }
