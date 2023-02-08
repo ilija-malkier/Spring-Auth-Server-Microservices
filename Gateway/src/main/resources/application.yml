@@ -5,26 +5,28 @@ spring:
     gateway:
       routes:
         - id: resources
-          uri: http://localhost:9090/demo
+          uri: http://localhost:9090/messages
           predicates:
-            - Path=/demo
-            - Method=GET
-#          filters:
-#             TokenRelay=
+            Path=/messages
+          filters:
+            TokenRelay=
 
-  security:
-    oauth2:
-      client:
-        registration:
-          gateway:
-            provider: spring
-            client-id: client
-            client-secret: secret
-            authorization-grant-type: authorization_code
-            redirect-uri: http://127.0.0.1:9000/login/oauth2/code/gateway
-            scope:
-              - openid
+      httpclient:
+        proxy:
+          host: localhost
 
-        provider:
-          spring:
-              issuer-uri: http://localhost:8080
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          mygtw:
+#            provider: spring
+#            client-id: client
+#            client-secret: secret
+#            authorization-grant-type: authorization_code
+#            redirect-uri: http://127.0.0.1:9000/login/oauth2/code/mygtw
+#            scope: openid
+#
+#        provider:
+#          spring:
+#              issuer-uri: http://localhost:8080

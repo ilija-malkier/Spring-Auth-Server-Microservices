@@ -13,6 +13,12 @@ public class Controller {
 //    public String demo(){
 //        return "demo";
 //    }
+
+    @GetMapping("/messages")
+    public String messages(){
+        return "hello";
+    }
+
     @GetMapping("/demo")
     public String demo(Authentication authentication){
         return authentication.getAuthorities().toString();

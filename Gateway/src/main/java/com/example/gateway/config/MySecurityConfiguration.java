@@ -10,16 +10,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class MySecurityConfiguration {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-      httpSecurity
-              .authorizeHttpRequests(x->x.requestMatchers("/error").permitAll())
-              .authorizeHttpRequests().anyRequest().authenticated()
-
-              .and()
-
-              .oauth2Login(x->x.loginPage("/oauth2/authorization/gateway"))
-              .oauth2Client(Customizer.withDefaults());
-        return httpSecurity.build();
-    }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+////      httpSecurity
+////              .authorizeHttpRequests(x->x.requestMatchers("/error").permitAll())
+////              .authorizeHttpRequests().anyRequest().authenticated()
+////
+////              .and()
+////
+////              .oauth2Login(x->x.loginPage("/oauth2/authorization/mygtw"))
+////              .oauth2Client(Customizer.withDefaults());
+//        httpSecurity.authorizeHttpRequests().anyRequest().permitAll();
+//        return httpSecurity.build();
+//    }
 }

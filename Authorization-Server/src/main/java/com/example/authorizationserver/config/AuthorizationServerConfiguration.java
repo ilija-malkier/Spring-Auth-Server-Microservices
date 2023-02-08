@@ -50,10 +50,11 @@ public class AuthorizationServerConfiguration {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .scope(OidcScopes.OPENID)
                 //should not use localhost,baca exeption nije dozvoljeno
                 .redirectUri("http://127.0.0.1:8081/login/oauth2/code/myoauth2")
-                .redirectUri("http://127.0.0.1:9000/login/oauth2/code/gateway")
+                .redirectUri("http://127.0.0.1:9000/login/oauth2/code/mygtw")
+                .redirectUri("http://127.0.0.1:9000/authorized")
+                .scope(OidcScopes.OPENID)
 //                .redirectUri("http://127.0.0.1:8080/auth")
 //                .tokenSettings(TokenSettings.builder()
 //                        //Menjamo da li je opaque ili non-opaque
@@ -70,7 +71,7 @@ public class AuthorizationServerConfiguration {
 
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
-        return AuthorizationServerSettings.builder().build();
+        return AuthorizationServerSettings.builder().issuer("http://localhost:8080").build();
     }
 
 }
