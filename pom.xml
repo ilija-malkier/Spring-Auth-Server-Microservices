@@ -11,6 +11,7 @@
         <module>Authorization-Server</module>
         <module>Resource-Server</module>
         <module>Gateway</module>
+        <module>Client</module>
     </modules>
     <dependencyManagement>
         <dependencies>

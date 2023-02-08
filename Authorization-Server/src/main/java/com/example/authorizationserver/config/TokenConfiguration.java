@@ -28,6 +28,8 @@ public class TokenConfiguration {
         return new ImmutableJWKSet<>(set);
     }
 
+
+    //requeired for openid scope to work
     @Bean
     public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
         return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);

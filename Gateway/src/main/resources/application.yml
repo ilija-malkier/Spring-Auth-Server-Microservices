@@ -5,25 +5,26 @@ spring:
     gateway:
       routes:
         - id: resources
-          uri: http://127.0.0.1:9090/demo
+          uri: http://localhost:9090/demo
           predicates:
             - Path=/demo
-          filters:
-             - TokenRelay=
+            - Method=GET
+#          filters:
+#             TokenRelay=
 
   security:
     oauth2:
       client:
         registration:
           gateway:
-            provider: my-provider
+            provider: spring
             client-id: client
             client-secret: secret
             authorization-grant-type: authorization_code
-            redirect-uri: "http://127.0.0.1:9000/login/oauth2/code/{registrationId}"
+            redirect-uri: http://127.0.0.1:9000/login/oauth2/code/gateway
             scope:
               - openid
 
         provider:
-            my-provider:
-              issuer-uri: http://127.0.0.1:8080
+          spring:
+              issuer-uri: http://localhost:8080

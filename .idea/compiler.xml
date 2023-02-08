@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Resource-Server" />
         <module name="Authorization-Server" />
+        <module name="Client" />
         <module name="Gateway" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
@@ -30,6 +31,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Authorization-Server" options="-parameters" />
       <module name="Authorization-Server (1)" options="-parameters" />
+      <module name="Client" options="-parameters" />
       <module name="Gateway" options="-parameters" />
       <module name="Resource-Server" options="-parameters" />
     </option>
