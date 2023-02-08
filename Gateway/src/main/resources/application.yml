@@ -1,0 +1,29 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: resources
+          uri: http://127.0.0.1:9090/demo
+          predicates:
+            - Path=/demo
+          filters:
+             - TokenRelay=
+
+  security:
+    oauth2:
+      client:
+        registration:
+          gateway:
+            provider: my-provider
+            client-id: client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:9000/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+
+        provider:
+            my-provider:
+              issuer-uri: http://127.0.0.1:8080

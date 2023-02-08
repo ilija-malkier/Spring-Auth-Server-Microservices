@@ -55,7 +55,7 @@ public class Client {
                 .scope(client.getScope())
                 //ovo bi bilo u bazi ali zbog lakseg rada mi cemo vode direktno
                 .tokenSettings(TokenSettings.builder()
-                        .accessTokenFormat(OAuth2TokenFormat.REFERENCE) //opaque
+                        //.accessTokenFormat(OAuth2TokenFormat.REFERENCE) //opaque
                         .build())
 
                 .build();

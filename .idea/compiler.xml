@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Resource-Server" />
         <module name="Authorization-Server" />
+        <module name="Gateway" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -19,13 +20,17 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Authorization-Server (1)" target="17" />
       <module name="Resouce-Server" target="17" />
       <module name="ResourceServer" target="17" />
+      <module name="Spring-Cloud-Gateway" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Authorization-Server" options="-parameters" />
+      <module name="Authorization-Server (1)" options="-parameters" />
+      <module name="Gateway" options="-parameters" />
       <module name="Resource-Server" options="-parameters" />
     </option>
   </component>
